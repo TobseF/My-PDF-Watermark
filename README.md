@@ -8,11 +8,17 @@ Original files won't be overwritten.
 ![screenshot](docs/screenshot.png)
 
 ## ⭐ Features
-
 * Simple one-click UI
 * Settings file for customization
 * Runs independent on Win,Mac & Linux
 * Console support for advanced users
+
+## 💿 Download
+
+📦 [MyPDFWatermark.zip](https://github.com/TobseF/My-PDF-Watermark/files/12325243/MyPDFWatermark.zip) 13,13 MB
+> 💡 Requires an installed [Java JRE](https://adoptium.net/temurin/releases/).  
+> Runs on Windows, Linux & Mac.
+
 
 ## 💡 Usage
 
