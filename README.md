@@ -70,6 +70,17 @@ gradle run
 This will start the application main class: `eu.tobse.tool.pdfwatermark.App`.  
 (File: `app/src/main/java/eu/tobse/tool/pdfwatermark/App.java`)
 
+## 🔨 Build Jar
+
+To build a runnable jar with all dependencies, run
+the [Gradle Shadow Plugin](https://imperceptiblethoughts.com/shadow/):
+
+```shell
+gradle shadowJar
+```
+
+The output file will be saved in: `build/libs/app-all.jar`.
+
 ## 🗂 Dependencies
 
 All dependencies are included in the `app\lib` folder. No external maven or grade dependencies are needed.
