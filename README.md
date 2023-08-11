@@ -1,9 +1,11 @@
-# <img src=".idea/icon.svg" width="36"/> My PDF Watermark
+# <img src=".idea/icon.svg" width="38"/> My PDF Watermark
 
 Simple app which adds a background layer to a PDF.  
 The background is loaded from a second PDF file.  
 The converted PDF is saved as new file.  
 Original files won't be overwritten.
+
+![screenshot](docs/screenshot.png)
 
 ## ⭐ Features
 
