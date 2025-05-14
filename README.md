@@ -2,7 +2,7 @@
 
 Simple app which adds a background layer to a PDF.  
 The background is loaded from a second PDF file.  
-The converted PDF is saved as new file.  
+The converted PDF is saved as a new file.  
 Original files won't be overwritten.
 
 ![screenshot](docs/screenshot.png)
@@ -10,7 +10,7 @@ Original files won't be overwritten.
 ## ⭐ Features
 * Simple one-click UI
 * Settings file for customization
-* Runs independent on Win,Mac & Linux
+* Runs independently on Win, Mac & Linux
 * Console support for advanced users
 
 ## 💿 Download
@@ -39,7 +39,7 @@ There are several ways to add a watermark to a PDF.
 3. Move A File onto the APP Shortcut
    Drag and move a PDF file onto the app shortcut.
 4. Command Line Mode
-   Run the app with command line and a path to a PDF file as argument:
+   Run the app with a command line and a path to a PDF file as argument:
     ``` shell
     java -jar MyWatermark.jar path/my_document.pdf
     ```
@@ -50,7 +50,7 @@ Change settings in the `config.ini`:
 
 ```properties
 # Can be an absolute path to the save location.
-# Can be emtpy or `same`, to save to the location of the input file.
+# Can be empty or `same`, to save to the location of the input file.
 # Can be `desktop` which points to `USER_HOME/Desktop`.
 save_path = same
 
@@ -67,7 +67,7 @@ To start the app within your IDE start the included run configuration:
 
 * ▶ `PDFWatermark.xml`
 
-Alternatively you can start the app with the [Gradle](https://gradle.org) command:
+Alternatively, you can start the app with the [Gradle](https://gradle.org) command:
 
 ```shell
 gradle run
@@ -91,9 +91,9 @@ The output file will be saved in: `build/libs/app-all.jar`.
 
 All dependencies are included in the `app\lib` folder. No external maven or grade dependencies are needed.
 Gradle will link them automatically. If you want to build the project without Gradle,
-just add it as _dependencies_ folder in your IDE.
+just add it as a _dependencies_ folder in your IDE.
 
-Under the hood it baked by [jPdf Tweak - Swiss Army Knife for PDF files](https://jpdftweak.sourceforge.io)
+Under the hood it is baked by [jPdf Tweak - Swiss Army Knife for PDF files](https://jpdftweak.sourceforge.io)
 which uses [iText](https://github.com/itext).
 
 ## 📜 MIT Licence
@@ -102,7 +102,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 documentation files (the "Software"), to deal in the Software without restriction, including without limitation
 the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
 and to permit persons to whom the Software is furnished to do so.  
-For details check: [LICENSE.md](LICENSE.md).  
+For details check: [LICENCE.md](LICENCE.md).  
 Please respect the licences of the included dependencies:
 
 * jPdf Tweak [Affero GNU Public License](https://www.gnu.org/licenses/agpl-3.0.en.html)
@@ -111,6 +111,7 @@ Please respect the licences of the included dependencies:
   The original version is written by [Bruno Lowagie](https://lowagie.com/).
 * BouncyCastle [MIT Like](https://www.bouncycastle.org/licence.html)  
   Copyright ©2000-2023 The [Legion Of The Bouncy Castle](http://www.bouncycastle.org)
-* Commons Lang 3 [Apache License](https://www.apache.org/licenses/LICENSE-2.0)
+* Commons Lang 3 [Apache Licence 2](https://www.apache.org/licenses/LICENSE-2.0)
 * FileDrop - Robert Harder - [Public Domain](https://creativecommons.org/publicdomain/)
+* ini4j [Apache Licence 2](https://www.apache.org/licenses/LICENSE-2.0)
 
