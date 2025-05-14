@@ -14,6 +14,9 @@ dependencies {
   implementation(":bcprov:")
   implementation(":bcmail:")
 
+  // INI4J - Read INI files
+  implementation(":ini4j:0.5.4")
+
   // Commons lang for String utils
   implementation(":commons-lang3:3.12.0")
 }

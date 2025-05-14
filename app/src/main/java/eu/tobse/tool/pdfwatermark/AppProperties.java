@@ -1,11 +1,10 @@
 package eu.tobse.tool.pdfwatermark;
 
 import org.apache.commons.lang3.StringUtils;
+import org.ini4j.Wini;
 
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Properties;
@@ -13,7 +12,7 @@ import java.util.Properties;
 public class AppProperties {
 
     /**
-     * Taages the converted PDF File
+     * Appended suffix for the converted PDF File
      */
     private static final String NEW_SUFFIX = "_w";
     /**
@@ -24,29 +23,31 @@ public class AppProperties {
      * Config file Name which stores the {@link Properties}
      */
     private static final String CONFIG_FILE = "config.ini";
-    private Properties properties;
-    private String savePath, watermarkFile;
+    /**
+     * Section name in INI CONFIG_FILE
+     */
+    private static final String INI_SECTION = "watermark";
+    private Wini ini;
+    private String watermarkFile;
 
     public void readProperties() {
-        if (properties == null) {
-            properties = new Properties();
+        if (ini == null) {
             try {
-                properties.load(new FileReader(CONFIG_FILE));
+                ini = new Wini(new File(CONFIG_FILE));
             } catch (IOException e) {
-                createDefaultProperties();
+                e.printStackTrace();
             }
         }
-        String watermark_file = properties.getProperty("watermark_file");
-        String save_path = properties.getProperty("save_path");
-        if (watermark_file.isEmpty() || save_path.isEmpty()) {
-            createDefaultProperties();
-        } else {
-            savePath = save_path;
-            watermarkFile = watermark_file;
-            if (savePath.equals("desktop")) {
-                savePath = getDesktopDirectory().getAbsolutePath();
-            }
-        }
+        watermarkFile = getProperty("watermark_file", "watermark.pdf");
+    }
+
+    public String getProperty(String key) {
+        return ini.get(INI_SECTION, key);
+    }
+
+    public String getProperty(String key, String defaultValue) {
+        String value = getProperty(key);
+        return StringUtils.defaultIfEmpty(value, defaultValue);
     }
 
     public File getWatermarkFile() {
@@ -55,39 +56,29 @@ public class AppProperties {
 
     public File getSaveFilePath(File resourceFile) {
         String savePath = getPropertySavePath();
+        String newFileName = addSuffix(resourceFile.getName(), getNewSuffix());
         if (savePath.isEmpty() || savePath.equals("same")) {
             // Save the file to the same location
             return addSuffix(resourceFile, getNewSuffix());
-        } else {
-            String newFileName = addSuffix(resourceFile.getName(), getNewSuffix());
+        } else if(savePath.equals("desktop")){
             // Save to desktop
             return Paths.get(getDesktopDirectory().getAbsolutePath(), newFileName).toFile();
+        }else {
+            // Save to a custom location
+            return Paths.get(savePath, newFileName).toFile();
         }
     }
 
     public String getNewSuffix() {
-        return properties.getProperty("new_file_suffix", NEW_SUFFIX);
+        return getProperty("new_file_suffix", NEW_SUFFIX);
     }
 
     private String getPropertySavePath() {
-        return properties.getProperty("save_path");
+        return getProperty("save_path", "desktop");
     }
-
 
     public File getDesktopDirectory() {
         return FileSystemView.getFileSystemView().getHomeDirectory();
-    }
-
-    private void createDefaultProperties() {
-        properties = new Properties();
-        properties.setProperty("watermark_file", "watermark.pdf");
-        properties.setProperty("save_path", "desktop");
-        properties.setProperty("new_file_suffix", "_w");
-        try {
-            properties.store(new FileOutputStream(CONFIG_FILE), "Watermark config file");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private File addSuffix(File fileName, String suffix) {
