@@ -15,7 +15,7 @@ Original files won't be overwritten.
 
 ## 💿 Download
 
-📦 [MyPDFWatermark.zip](https://github.com/TobseF/My-PDF-Watermark/files/12325243/MyPDFWatermark.zip) 13,13 MB
+📦 [MyPDFWatermark.zip](https://github.com/TobseF/My-PDF-Watermark/releases/download/1.0.1/MyPDFWatermark_v1.0.1.zip) 3,22 MB
 > 💡 Requires an installed [Java JRE](https://adoptium.net/temurin/releases/).  
 > Runs on Windows, Linux & Mac.
 
